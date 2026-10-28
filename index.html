@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Assistente do Aquarista · Paragon (beta)</title>
+<meta name="description" content="Seus aquários, o diário da água e o painel com a faixa das suas espécies, com fonte. Dados só no seu aparelho.">
+<meta name="theme-color" content="#060504">
+<meta name="robots" content="noindex"><!-- BETA FECHADO: não indexar -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Aquarista">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="comum/img/icone-192.png">
+<link rel="apple-touch-icon" href="comum/img/icone-192.png">
+<link rel="stylesheet" href="comum/fontes/fonts.css">
+<link rel="stylesheet" href="assistente.css">
+<!-- CONTADOR ANÔNIMO: NÃO INSTALADO. Proposta no HANDOFF.md, aguarda aprovação do CEO. -->
+<script>
+/* Direção B (Vidro e ouro). Antes de pintar: cai para superfície sólida e fundo parado quando o aparelho não tem
+   backdrop-filter, pede menos movimento/transparência ou é de entrada (pouca memória/núcleos). Nada pode travar. */
+(function () {
+  var d = document.documentElement, m = function (q) { return window.matchMedia && matchMedia(q).matches; };
+  var semVidro = !(window.CSS && CSS.supports && (CSS.supports('backdrop-filter', 'blur(2px)') || CSS.supports('-webkit-backdrop-filter', 'blur(2px)')));
+  var fraco = (navigator.deviceMemory && navigator.deviceMemory <= 2) || (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4 && /android/i.test(navigator.userAgent));
+  if (semVidro || fraco || m('(prefers-reduced-transparency: reduce)')) d.classList.add('solido');
+  if (fraco || m('(prefers-reduced-motion: reduce)')) d.classList.add('parado');
+})();
+</script>
+</head>
+<body>
+<div class="luz" aria-hidden="true"></div>
+<img id="seloSrc" src="comum/img/selo-paragon.webp" alt="" hidden>
+
+<!-- ícones (desenhados para o app, sem biblioteca externa) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-aq" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3 10c2-1.3 4-1.3 6 0s4 1.3 6 0 4-1.3 6 0"/></symbol>
+  <symbol id="i-gota" viewBox="0 0 24 24"><path d="M12 3s6 6.4 6 11a6 6 0 0 1-12 0c0-4.6 6-11 6-11z"/></symbol>
+  <symbol id="i-cic" viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.4-5.7"/><path d="M20 4.5V9h-4.5"/></symbol>
+  <symbol id="i-aj" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2.5v3M12 18.5v3M4.6 4.6l2.1 2.1M17.3 17.3l2.1 2.1M2.5 12h3M18.5 12h3M4.6 19.4l2.1-2.1M17.3 6.7l2.1-2.1"/></symbol>
+  <symbol id="i-mais" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="i-menos" viewBox="0 0 24 24"><path d="M5 12h14"/></symbol>
+  <symbol id="i-dir" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></symbol>
+  <symbol id="i-esq" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+  <symbol id="i-ok" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+  <symbol id="i-al" viewBox="0 0 24 24"><path d="M12 6v8M12 18h.01"/></symbol>
+  <symbol id="i-peixe" viewBox="0 0 24 24"><path d="M3 12c3-4.5 9-5.5 13-1.5L20 7v10l-4-3.5C12 17.5 6 16.5 3 12z"/><path d="M8 11.5h.01"/></symbol>
+  <symbol id="i-lapis" viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16v4z"/><path d="M13.5 6.5l4 4"/></symbol>
+  <symbol id="i-cal" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></symbol>
+  <symbol id="i-sino" viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15L6 16z"/><path d="M10 20.5a2 2 0 0 0 4 0"/></symbol>
+  <symbol id="i-regua" viewBox="0 0 24 24"><rect x="2.5" y="8" width="19" height="8" rx="1.5"/><path d="M6.5 8v3M10.5 8v4M14.5 8v3M18.5 8v4"/></symbol>
+  <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></symbol>
+  <symbol id="i-mais3" viewBox="0 0 24 24"><path d="M5 12h.01M12 12h.01M19 12h.01"/></symbol>
+  <symbol id="i-seta" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-busca" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.2-4.2"/></symbol>
+  <symbol id="i-baixar" viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5"/><path d="M4 17v3h16v-3"/></symbol>
+  <symbol id="i-subir" viewBox="0 0 24 24"><path d="M12 15V3M7 8l5-5 5 5"/><path d="M4 17v3h16v-3"/></symbol>
+  <symbol id="i-escudo" viewBox="0 0 24 24"><path d="M12 3l7.5 3v5.5c0 4.6-3.2 8.2-7.5 9.5-4.3-1.3-7.5-4.9-7.5-9.5V6z"/></symbol>
+  <symbol id="i-lixo" viewBox="0 0 24 24"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"/></symbol>
+  <symbol id="i-celular" viewBox="0 0 24 24"><rect x="6.5" y="2.5" width="11" height="19" rx="2.5"/><path d="M11 18.5h2"/></symbol>
+  <symbol id="i-hist" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/></symbol>
+</svg>
+
+<header class="barra" id="barra"></header>
+<main class="app" id="tela" aria-live="polite"></main>
+
+<nav class="tab" id="abas" aria-label="Seções">
+  <button type="button" data-aba="aquarios" aria-label="Aquários"><svg class="ic"><use href="#i-aq"/></svg><span>Aquários</span></button>
+  <button type="button" data-aba="ciclagem" aria-label="Ciclagem"><svg class="ic"><use href="#i-cic"/></svg><span>Ciclagem</span></button>
+  <button type="button" class="mais-c" data-acao="medir" aria-label="Registrar medição"><svg class="ic"><use href="#i-mais"/></svg></button>
+  <button type="button" data-aba="especies" aria-label="Espécies e compatibilidade"><svg class="ic"><use href="#i-peixe"/></svg><span>Espécies</span></button>
+  <button type="button" data-aba="ajustes" aria-label="Ajustes"><svg class="ic"><use href="#i-aj"/></svg><span>Ajustes</span></button>
+</nav>
+
+<section class="cheia" id="cheia" hidden aria-modal="true" role="dialog"></section>
+<dialog class="folha" id="folha"><div id="folhaConteudo"></div></dialog>
+<input type="file" id="arquivoBackup" accept=".json,application/json" hidden>
+
+<script src="comum/dados/parametros.js"></script>
+<script src="comum/dados/agua.js"></script>
+<script src="comum/dados/imagens.js"></script>
+<script src="comum/dados/especies.js"></script>
+<script src="comum/regras.js"></script>
+<script src="nucleo.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
