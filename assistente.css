@@ -56,7 +56,6 @@ html.solido .barra.rolou{background:#0E0C09}
 
 /* ---------- layout ---------- */
 .app{max-width:640px;margin:0 auto;padding:calc(var(--topo) + 4px) 20px var(--base)}
-body.sem-abas .app{padding-bottom:calc(40px + env(safe-area-inset-bottom))}
 .let{font:400 50px/.98 var(--st);letter-spacing:-.025em;text-wrap:balance}
 .let i,.let em{font-style:italic;color:var(--ouro2)}
 .let.m{font-size:40px;line-height:1}
@@ -90,7 +89,6 @@ body.sem-abas .app{padding-bottom:calc(40px + env(safe-area-inset-bottom))}
   background:rgba(22,19,14,.62);border:1px solid var(--fio);box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 18px 40px rgba(0,0,0,.45);
   -webkit-backdrop-filter:blur(22px) saturate(1.4);backdrop-filter:blur(22px) saturate(1.4)}
 html.solido .tab{background:#17140F;-webkit-backdrop-filter:none;backdrop-filter:none}
-body.sem-abas .tab{display:none}
 .tab button{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;height:100%;font:600 11px/1 var(--tx);color:var(--mudo2)}
 .tab button .ic{width:24px;height:24px}
 .tab button[aria-current=page]{color:var(--ouro2)}
@@ -419,7 +417,7 @@ body.em-cheia .app,body.em-cheia .tab,body.em-cheia .barra{display:none}
 .folha .grupo{background:rgba(255,248,235,.05)}
 .toast{position:fixed;left:50%;bottom:calc(98px + env(safe-area-inset-bottom));transform:translateX(-50%);z-index:60;background:#2a2216;border:1px solid rgba(217,168,78,.5);color:var(--marfim);
   padding:12px 18px;border-radius:99px;font-size:15px;box-shadow:0 20px 40px rgba(0,0,0,.45);max-width:92vw;width:max-content;text-align:center;animation:sobe .25s ease-out}
-body.sem-abas .toast,body.em-cheia .toast{bottom:calc(110px + env(safe-area-inset-bottom))}
+body.em-cheia .toast{bottom:calc(110px + env(safe-area-inset-bottom))}
 
 @media (min-width:760px){.let{font-size:60px}.app{padding-left:28px;padding-right:28px}}
 @media (max-width:360px){.let{font-size:42px}.visor .num-b{font-size:88px;min-height:88px}.alerta .g>b{font-size:60px}}
@@ -484,3 +482,15 @@ img.mini{width:44px;height:32px;object-fit:cover;border-radius:9px;flex:none;bac
 .fauna li img.mini{margin-left:-6px}
 .ficha .px ul.fontes,.px ul.fontes{margin-top:6px}
 details.como summary{font-size:14px}
+/* cards de espécies sugeridas + X da ficha */
+.cards-esp{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.card-esp{position:relative;border-radius:20px;overflow:hidden}
+.card-esp .ver{display:flex;flex-direction:column;align-items:flex-start;gap:8px;width:100%;text-align:left;padding:12px;min-height:150px}
+.card-esp .mini{width:100%;height:84px;object-fit:cover;border-radius:12px}
+.card-esp .nm b{display:block;font:600 15px/1.2 var(--tx)}
+.card-esp .nm i{display:block;font:italic 400 12px/1.3 var(--tx);color:var(--mudo)}
+.card-esp .add{position:absolute;top:18px;right:18px;width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(6,5,4,.7);color:var(--ouro2)}
+.card-esp .add .ic{width:18px;height:18px}
+.folha{position:relative}
+.fecha-folha{position:absolute;top:12px;right:14px;z-index:2;width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+.ficha h2{padding-right:48px}

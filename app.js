@@ -112,7 +112,6 @@
       return ui.med ? telaMedicao() : telaNovo();
     }
     document.body.classList.remove('em-cheia'); cheia.hidden = true; cheia.innerHTML = '';
-    document.body.classList.toggle('sem-abas', !E.aquarios.length && ui.aba === 'aquarios' && !ui.form);
     if (ui.form) return telaFormAquario();
     if (ui.aba === 'ciclagem') return telaCiclagem();
     if (ui.aba === 'especies') return telaEspecies();
@@ -998,14 +997,25 @@
     tela.innerHTML = '<h1 class="let">Espécies</h1><p class="sub">Busque um peixe para ver a ficha com fonte ou junte vários para checar se combinam.</p>' +
       '<div class="busca">' + ic('busca') + '<input id="eBusca" type="search" value="' + esc(ui.busca) + '" placeholder="Digite um peixe (ex.: neon, betta)" autocomplete="off" enterkeyhint="search" aria-label="Buscar espécie"></div>' +
       '<ul class="sugestoes vd" id="eSug"' + (ui.busca.trim() ? '' : ' hidden') + '></ul>' +
+      '<div id="eSugCards">' + cartoesSugeridos() + '</div>' +
       '<h2 class="sec">Checar combinação</h2>' +
       (E.aquarios.length ? '<div class="chaves" style="margin-bottom:6px">' + E.aquarios.map(function (a) { return '<button type="button" class="chave" data-ecarregar="' + esc(a.id) + '">' + ic('aq') + esc(a.nome) + '</button>'; }).join('') + '</div>' : '') +
       '<ul class="fauna" id="eFauna"></ul>' +
       '<div id="eCombo"></div>';
     desenharSugE(); desenharCombo();
   }
+  var SUGERIDAS = ['betta', 'guppy', 'neon', 'platy', 'coridora-bronze', 'cardinal', 'ramirezi', 'kinguio'];
+  function cartoesSugeridos() {
+    var l = SUGERIDAS.filter(function (id) { return POR_ID[id]; }); if (!l.length) return '';
+    return '<h2 class="sec">Para começar</h2><div class="cards-esp">' + l.map(function (id) {
+      var e = POR_ID[id];
+      return '<div class="card-esp vd"><button type="button" class="ver" data-ficha="' + esc(id) + '">' + imgEsp(e) + '<span class="nm"><b>' + esc(e.nome_popular) + '</b><i>' + esc(e.nome_cientifico) + '</i></span></button>' +
+        '<button type="button" class="add" data-eadd="' + esc(id) + '" aria-label="Juntar ' + esc(e.nome_popular) + ' à combinação">' + ic('mais') + '</button></div>';
+    }).join('') + '</div>';
+  }
   function desenharSugE() {
     var ul = $('eSug'), t = ui.busca; if (!ul) return;
+    var cs = $('eSugCards'); if (cs) cs.hidden = !!t.trim();
     if (!t.trim()) { ul.hidden = true; ul.innerHTML = ''; return; }
     var res = R.buscar(D.especies, t, 8);
     ul.innerHTML = res.map(function (e) {
@@ -1029,7 +1039,7 @@
     var f = function (r, un) { return Array.isArray(r) && r.length === 2 ? N.faixaTxt(r[0], r[1], un) : '—'; };
     var lit = e.litragem_min_l || {}, tam = e.tamanho_adulto_cm || {};
     var temper = { pacifico: 'Pacífico', semi_agressivo: 'Semiagressivo', agressivo: 'Agressivo' }[e.temperamento] || e.temperamento || '—';
-    abrirFolha('<div class="ficha"><h2>' + esc(e.nome_popular) + '</h2><p class="cien">' + esc(e.nome_cientifico) + '</p>' + imgEsp(e, true) +
+    abrirFolha('<button type="button" class="fecha-folha bc vd" data-acao="fechar-folha" aria-label="Fechar">' + ic('x') + '</button><div class="ficha"><h2>' + esc(e.nome_popular) + '</h2><p class="cien">' + esc(e.nome_cientifico) + '</p>' + imgEsp(e, true) +
       '<div class="tres"><div class="vd"><small>Temperatura</small><b>' + f(e.temperatura_c, '°C') + '</b></div><div class="vd"><small>pH</small><b>' + f(e.ph, '') + '</b></div><div class="vd"><small>Tamanho</small><b>' + (tam.max ? N.num(tam.max) + ' cm' : '—') + '</b></div>' +
       '<div class="vd"><small>Cardume</small><b>' + (e.grupo_minimo > 1 ? e.grupo_minimo + '+' : 'não') + '</b></div><div class="vd"><small>Litragem mín.</small><b>' + (lit.conservador ? lit.conservador + ' L' : '—') + '</b></div><div class="vd"><small>Temperamento</small><b style="font:600 14px/1.3 var(--tx)">' + esc(temper) + '</b></div></div>' +
       (lit.observacao ? '<p class="nota">' + esc(lit.observacao) + '</p>' : '') +
@@ -1195,6 +1205,7 @@
       case 'aq-existente': novoForm(null); ui.aba = 'aquarios'; desenhar(); window.scrollTo(0, 0); setTimeout(function () { $('fNome') && $('fNome').focus(); }, 50); break;
       case 'aq-portas': folhaPortas(); break;
       case 'ir-ajustes': ir('ajustes'); break;
+      case 'fechar-folha': break;
       case 'editar-aq': novoForm(aquario(ui.aqId)); desenhar(); window.scrollTo(0, 0); break;
       case 'peixes-aq': novoForm(aquario(ui.aqId)); desenhar(); setTimeout(function () { var s = $('secPeixes'); if (s) s.scrollIntoView(); var i = $('fBusca'); if (i) i.focus({ preventScroll: true }); }, 50); break;
       case 'cancelar-aq': ui.form = null; desenhar(); break;
