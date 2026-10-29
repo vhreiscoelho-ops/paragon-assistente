@@ -23,7 +23,7 @@ window.PARAGON_ESPECIES = {
       "come_peixes_pequenos": false,
       "plantas": "seguro",
       "camaroes": "risco",
-      "nao_misturar_com": ["barbo-sumatra", "botia-palhaco", "guppy", "acara-bandeira", "tricogaster", "colisa-lalia", "tetra-colombiano"],
+      "nao_misturar_com": ["barbo-sumatra", "botia-palhaco", "guppy", "acara-bandeira", "tricogaster", "colisa-lalia", "colisa-sunset", "colisa-azul", "tetra-colombiano"],
       "companhia": { "cor": "amarelo", "aceita": [], "texto": "O betta é territorial e pode brigar com outros peixes; o mais indicado é mantê-lo sozinho. Se for juntar, escolha peixes calmos, sem nadadeira longa, e observe." },
       "notas": [
         "Dois machos juntos, nunca.",
@@ -71,7 +71,7 @@ window.PARAGON_ESPECIES = {
       "come_peixes_pequenos": false,
       "plantas": "seguro",
       "camaroes": "risco",
-      "nao_misturar_com": ["barbo-sumatra", "botia-palhaco", "betta", "colisa-lalia", "tetra-colombiano"],
+      "nao_misturar_com": ["barbo-sumatra", "botia-palhaco", "betta", "colisa-lalia", "colisa-sunset", "colisa-azul", "tetra-colombiano"],
       "notas": [
         "Mantenha mais fêmeas que machos.",
         "Reproduz muito, e os adultos comem os filhotes.",
@@ -894,7 +894,7 @@ window.PARAGON_ESPECIES = {
       "id": "colisa-lalia",
       "nome_popular": "Colisa-lalia",
       "artigo": "a",
-      "outros_nomes": ["Colisa", "Colisa lalia", "Lalia", "Gurami-anão", "Gurami anão", "Dwarf gourami", "Trichogaster lalius", "Colisa neon blue", "Lalia neon blue", "Lalia neon", "Colisa azul", "Lalia azul", "Colisa vermelha", "Lalia vermelho", "Lalia red", "Colisa coral", "Lalia sunset", "Robin"],
+      "outros_nomes": ["Colisa", "Colisa lalia", "Lalia", "Gurami-anão", "Gurami anão", "Dwarf gourami", "Trichogaster lalius", "Robin"],
       "nome_cientifico": "Trichogaster lalius",
       "nivel": "intermediario",
       "tamanho_adulto_cm": { "tipico": 8.8, "max": 8.8 },
@@ -917,6 +917,100 @@ window.PARAGON_ESPECIES = {
         "Dois machos juntos dão briga: a fonte só aceita em aquário muito grande. Betta, outros anabantídeos e peixes vistosos como o guppy podem deixar o macho muito agressivo.",
         "Há um vírus que aparece em lalias importadas (iridovírus do gurami-anão, DGIV): a Seriously Fish diz que é muito contagioso, passa para outros peixes pela água e até hoje não tem tratamento. Compre de fornecedor confiável e mantenha os peixes novos em quarentena antes de juntar.",
         "Variedades de cor (neon blue, vermelha/sunset) pedem o mesmo cuidado da forma natural."
+      ],
+      "popular_x_fonte": [
+        { "popular": "Colisa é tranquila para qualquer comunitário.", "fonte_diz": "A Seriously Fish dá uma recomendação 'com reserva' para o comunitário: é tímida, territorial e, em aquário pequeno, deve ser o peixe principal." },
+        { "popular": "Dá para ter dois machos de colisa no mesmo aquário.", "fonte_diz": "A Seriously Fish diz que dois machos são 'receita para desastre', a não ser em aquário muito grande." },
+        { "popular": "Colisa e betta combinam, são parentes.", "fonte_diz": "A Seriously Fish avisa que outros anabantídeos, incluindo o betta, podem deixar o macho de colisa muito agressivo." }
+      ],
+      "internacional_x_brasil": [
+        { "tema": "Litragem", "internacional": "Seriously Fish: 60x30x30 cm (cerca de 56 L) mal basta para um casal.", "brasil": "Lojas e sites brasileiros variam de 40 a 70 L: 40 L (Pró-Aquarista, Aquafam), 60 L (Aqua Stuchi), 70 L (RSDiscus). O Aquarismo Paulista dá 56 L na ficha, mas em resposta a leitores aceita uma colisa em 44 a 60 L e desaconselha casal ou trio abaixo de uns 40 L.", "fonte_brasil": "Pró-Aquarista; Aquafam; Aqua Stuchi; RSDiscus; Aquarismo Paulista (prática brasileira, lojas e site)" },
+        { "tema": "No Brasil", "internacional": "Vendida no mundo todo como 'dwarf gourami'; boa parte vem de criadores da Ásia.", "brasil": "Um estudo brasileiro (dissertação da UFMG, 2025) trata a colisa-lalia como espécie de valor econômico na piscicultura ornamental do país e popular entre aquaristas; ele mediu a toxicidade da amônia e do nitrito nas larvas. (Visto pelo buscador; o PDF não abriu.)", "fonte_brasil": "Sales, M. C. S. — Efeito agudo dos compostos nitrogenados, amônia e nitrito, na fase larval da Colisa lalia (Trichogaster lalius). Dissertação, Zootecnia, UFMG, 2025" }
+      ],
+      "fontes": [
+        { "titulo": "Seriously Fish — Trichogaster lalius", "url": "https://www.seriouslyfish.com/species/trichogaster-lalius/" },
+        { "titulo": "Go et al. 2006 (Molecular and Cellular Probes 20:212-222) e Go & Whittington 2006 (Aquaculture 258:140-149) — megalocitivírus do gurami-anão; resumo em Practical Fishkeeping", "url": "https://www.practicalfishkeeping.co.uk/fishkeeping-news/aquarium-trade-may-have-spread-gourami-virus/" },
+        { "titulo": "Sales 2025 — dissertação UFMG sobre amônia e nitrito em larvas de Colisa lalia (via buscador)", "url": "https://repositorio.ufmg.br//bitstreams/1cc4c937-20bc-4087-aef1-db2a866aa3d9/download" },
+        { "titulo": "Pró-Aquarista — Colisa lália (prática brasileira, loja)", "url": "https://www.proaquarista.com.br/produto/colisa-lalia-trichogaster-lalius.html" },
+        { "titulo": "Aquarismo Paulista — Colisa lalia, ficha e respostas a leitores (prática brasileira)", "url": "https://www.aquarismopaulista.com/trichogaster-lalius/" }
+      ],
+      "validado_ceo": false,
+      "ilustracao": null
+    },
+    {
+      "id": "colisa-sunset",
+      "nome_popular": "Colisa-sunset",
+      "artigo": "a",
+      "outros_nomes": ["Colisa sunset", "Lalia sunset", "Colisa vermelha", "Lalia vermelho", "Lalia red", "Colisa coral", "Trichogaster lalius", "Gurami-anão", "Dwarf gourami"],
+      "nome_cientifico": "Trichogaster lalius",
+      "nivel": "intermediario",
+      "tamanho_adulto_cm": { "tipico": 8.8, "max": 8.8 },
+      "temperatura_c": [22, 27],
+      "ph": [6.0, 7.5],
+      "gh_dgh": [2, 18],
+      "litragem_min_l": { "conservador": 56, "pratica_comum": 40, "observacao": "Referência de fora (Seriously Fish): 60x30x30 cm (cerca de 56 L) mal basta para um casal. Prática brasileira: lojas especializadas (Pró-Aquarista, Aquafam) indicam 40 L, e o Aquarismo Paulista aceita uma colisa só em cerca de 44 L; outras lojas pedem 60 L (Aqua Stuchi) e 70 L (RSDiscus). Os 40 L valem para um macho só. Dois machos, só em aquário muito grande." },
+      "temperamento": "territorial",
+      "agressivo_com_mesma_especie": true,
+      "grupo_minimo": 1,
+      "zona": "superficie",
+      "dieta": "onivoro",
+      "come_peixes_pequenos": false,
+      "plantas": "seguro",
+      "camaroes": "risco",
+      "nao_misturar_com": ["betta", "guppy"],
+      "companhia": { "cor": "amarelo", "aceita": ["rasbora", "neon", "cardinal", "tetra-negro", "tetra-colombiano", "coridora-bronze", "coridora-pimenta"], "texto": "A fonte só recomenda a colisa-lalia com reserva para o comunitário: é tímida e territorial e, em aquário pequeno, deve ser o peixe principal. Ela cita rasboras, tetras e coridoras como companhia; outros guramis, só em aquário grande." },
+      "notas": [
+        "Nome: o gênero antigo Colisa hoje se chama Trichogaster. O 'tricogaster' de loja (gurami-azul, três-pintas) é outro gênero, Trichopodus, e chega a 15 cm.",
+        "Dois machos juntos dão briga: a fonte só aceita em aquário muito grande. Betta, outros anabantídeos e peixes vistosos como o guppy podem deixar o macho muito agressivo.",
+        "Há um vírus que aparece em lalias importadas (iridovírus do gurami-anão, DGIV): a Seriously Fish diz que é muito contagioso, passa para outros peixes pela água e até hoje não tem tratamento. Compre de fornecedor confiável e mantenha os peixes novos em quarentena antes de juntar.",
+        "Colisa-sunset (vermelha/coral) é uma variedade de cor criada da colisa-lalia (Trichogaster lalius): mesmos valores, cuidados e fontes da ficha da colisa-lalia. Misturar com outras lalias conta como a mesma espécie: um macho só."
+      ],
+      "popular_x_fonte": [
+        { "popular": "Colisa é tranquila para qualquer comunitário.", "fonte_diz": "A Seriously Fish dá uma recomendação 'com reserva' para o comunitário: é tímida, territorial e, em aquário pequeno, deve ser o peixe principal." },
+        { "popular": "Dá para ter dois machos de colisa no mesmo aquário.", "fonte_diz": "A Seriously Fish diz que dois machos são 'receita para desastre', a não ser em aquário muito grande." },
+        { "popular": "Colisa e betta combinam, são parentes.", "fonte_diz": "A Seriously Fish avisa que outros anabantídeos, incluindo o betta, podem deixar o macho de colisa muito agressivo." }
+      ],
+      "internacional_x_brasil": [
+        { "tema": "Litragem", "internacional": "Seriously Fish: 60x30x30 cm (cerca de 56 L) mal basta para um casal.", "brasil": "Lojas e sites brasileiros variam de 40 a 70 L: 40 L (Pró-Aquarista, Aquafam), 60 L (Aqua Stuchi), 70 L (RSDiscus). O Aquarismo Paulista dá 56 L na ficha, mas em resposta a leitores aceita uma colisa em 44 a 60 L e desaconselha casal ou trio abaixo de uns 40 L.", "fonte_brasil": "Pró-Aquarista; Aquafam; Aqua Stuchi; RSDiscus; Aquarismo Paulista (prática brasileira, lojas e site)" },
+        { "tema": "No Brasil", "internacional": "Vendida no mundo todo como 'dwarf gourami'; boa parte vem de criadores da Ásia.", "brasil": "Um estudo brasileiro (dissertação da UFMG, 2025) trata a colisa-lalia como espécie de valor econômico na piscicultura ornamental do país e popular entre aquaristas; ele mediu a toxicidade da amônia e do nitrito nas larvas. (Visto pelo buscador; o PDF não abriu.)", "fonte_brasil": "Sales, M. C. S. — Efeito agudo dos compostos nitrogenados, amônia e nitrito, na fase larval da Colisa lalia (Trichogaster lalius). Dissertação, Zootecnia, UFMG, 2025" }
+      ],
+      "fontes": [
+        { "titulo": "Seriously Fish — Trichogaster lalius", "url": "https://www.seriouslyfish.com/species/trichogaster-lalius/" },
+        { "titulo": "Go et al. 2006 (Molecular and Cellular Probes 20:212-222) e Go & Whittington 2006 (Aquaculture 258:140-149) — megalocitivírus do gurami-anão; resumo em Practical Fishkeeping", "url": "https://www.practicalfishkeeping.co.uk/fishkeeping-news/aquarium-trade-may-have-spread-gourami-virus/" },
+        { "titulo": "Sales 2025 — dissertação UFMG sobre amônia e nitrito em larvas de Colisa lalia (via buscador)", "url": "https://repositorio.ufmg.br//bitstreams/1cc4c937-20bc-4087-aef1-db2a866aa3d9/download" },
+        { "titulo": "Pró-Aquarista — Colisa lália (prática brasileira, loja)", "url": "https://www.proaquarista.com.br/produto/colisa-lalia-trichogaster-lalius.html" },
+        { "titulo": "Aquarismo Paulista — Colisa lalia, ficha e respostas a leitores (prática brasileira)", "url": "https://www.aquarismopaulista.com/trichogaster-lalius/" }
+      ],
+      "validado_ceo": false,
+      "ilustracao": null
+    },
+    {
+      "id": "colisa-azul",
+      "nome_popular": "Colisa-azul",
+      "artigo": "a",
+      "outros_nomes": ["Colisa azul", "Lalia azul", "Colisa neon blue", "Lalia neon blue", "Lalia neon", "Trichogaster lalius", "Gurami-anão", "Dwarf gourami"],
+      "nome_cientifico": "Trichogaster lalius",
+      "nivel": "intermediario",
+      "tamanho_adulto_cm": { "tipico": 8.8, "max": 8.8 },
+      "temperatura_c": [22, 27],
+      "ph": [6.0, 7.5],
+      "gh_dgh": [2, 18],
+      "litragem_min_l": { "conservador": 56, "pratica_comum": 40, "observacao": "Referência de fora (Seriously Fish): 60x30x30 cm (cerca de 56 L) mal basta para um casal. Prática brasileira: lojas especializadas (Pró-Aquarista, Aquafam) indicam 40 L, e o Aquarismo Paulista aceita uma colisa só em cerca de 44 L; outras lojas pedem 60 L (Aqua Stuchi) e 70 L (RSDiscus). Os 40 L valem para um macho só. Dois machos, só em aquário muito grande." },
+      "temperamento": "territorial",
+      "agressivo_com_mesma_especie": true,
+      "grupo_minimo": 1,
+      "zona": "superficie",
+      "dieta": "onivoro",
+      "come_peixes_pequenos": false,
+      "plantas": "seguro",
+      "camaroes": "risco",
+      "nao_misturar_com": ["betta", "guppy"],
+      "companhia": { "cor": "amarelo", "aceita": ["rasbora", "neon", "cardinal", "tetra-negro", "tetra-colombiano", "coridora-bronze", "coridora-pimenta"], "texto": "A fonte só recomenda a colisa-lalia com reserva para o comunitário: é tímida e territorial e, em aquário pequeno, deve ser o peixe principal. Ela cita rasboras, tetras e coridoras como companhia; outros guramis, só em aquário grande." },
+      "notas": [
+        "Nome: o gênero antigo Colisa hoje se chama Trichogaster. O 'tricogaster' de loja (gurami-azul, três-pintas) é outro gênero, Trichopodus, e chega a 15 cm.",
+        "Dois machos juntos dão briga: a fonte só aceita em aquário muito grande. Betta, outros anabantídeos e peixes vistosos como o guppy podem deixar o macho muito agressivo.",
+        "Há um vírus que aparece em lalias importadas (iridovírus do gurami-anão, DGIV): a Seriously Fish diz que é muito contagioso, passa para outros peixes pela água e até hoje não tem tratamento. Compre de fornecedor confiável e mantenha os peixes novos em quarentena antes de juntar.",
+        "Colisa-azul (neon blue) é uma variedade de cor criada da colisa-lalia (Trichogaster lalius): mesmos valores, cuidados e fontes da ficha da colisa-lalia. Misturar com outras lalias conta como a mesma espécie: um macho só."
       ],
       "popular_x_fonte": [
         { "popular": "Colisa é tranquila para qualquer comunitário.", "fonte_diz": "A Seriously Fish dá uma recomendação 'com reserva' para o comunitário: é tímida, territorial e, em aquário pequeno, deve ser o peixe principal." },

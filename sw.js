@@ -1,6 +1,6 @@
 /* Cache offline do Assistente do Aquarista. Só guarda os próprios arquivos; não envia nada a lugar nenhum.
    Os dados do usuário NÃO ficam aqui (ficam no localStorage). A VERSAO é trocada por montar.ps1. */
-const VERSAO = 'assistente-202610281905';
+const VERSAO = 'assistente-202610282211';
 const ARQUIVOS = ['./', 'index.html', 'assistente.css', 'app.js', 'nucleo.js', 'manifest.json',
   'comum/regras.js', 'comum/dados/especies.js', 'comum/dados/parametros.js', 'comum/dados/agua.js', 'comum/dados/imagens.js',
   'comum/fontes/fonts.css', 'comum/fontes/dmserif.woff2', 'comum/fontes/dmmono400.woff2', 'comum/fontes/dmmono500.woff2', 'comum/fontes/source.woff2',
